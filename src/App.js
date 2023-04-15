@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import EmojiData from './Emoji.json';
-import "./index.css"
+import "./App.css" 
 
 const App = () => {
   const [search,setSearch] = useState("");
@@ -11,24 +11,31 @@ const App = () => {
       setData(newData);
   },[search])
   return (
-    <div>
+    <div className='body'>
+      <form className="top">
       <center>
-        <h1>Emoji Search</h1>
+        <h1><br/><br/>EMOJI SEARCH<br/></h1>
         <input 
-          size="30" 
+          size="50" 
           type="text"
+          className='search'
           placeholder="search" 
           onChange={(e) => setSearch(e.target.value)} 
           value={search} 
         />
+        <br/><br/>
       </center>
-
-        {data.map((emoji) => (
-        <h2 key={emoji.title}>
+      </form>
+      <form className="bottom">
+      {data.map((emoji) => (<fieldset className="fset">
+        <h2 key={emoji.title} className="bottom">&nbsp;&nbsp;
           {emoji.title} {emoji.symbol}
         </h2>
+      </fieldset>
+        
       ))}
       
+      </form>
     </div>
   )
 }
